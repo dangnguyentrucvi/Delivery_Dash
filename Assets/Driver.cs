@@ -5,8 +5,8 @@ using UnityEngine.InputSystem;
 
 public class Driver : MonoBehaviour
 {
-    [SerializeField] float steerSpeed = 0.5f;
     [SerializeField] float moveSpeed = 0.05f;
+    [SerializeField] float steerSpeed = 0.5f;
     
     void Start()
     {
@@ -15,26 +15,29 @@ public class Driver : MonoBehaviour
     
     void Update()
     {
+        float move = 0f;
+        float steer = 0f;
+        
         if (Keyboard.current.wKey.isPressed)
         {
-            Debug.Log("We r moving forward!");
+            move = 1f;
         }
         else if (Keyboard.current.sKey.isPressed)
         {
-            Debug.Log("We r moving backward!");
+            move = -1f;
         }
         
         if (Keyboard.current.aKey.isPressed)
         {
-            Debug.Log("We r turning to the left!");
+            steer = 1f;
         }
         else if (Keyboard.current.dKey.isPressed)
         {
-            Debug.Log("We r turning to the right!");
+            steer = -1f;
         }
         
-        transform.Translate(0, moveSpeed, 0);
-        transform.Rotate(0, 0, steerSpeed); 
+        transform.Translate(0, move * moveSpeed, 0);
+        transform.Rotate(0, 0, steer * steerSpeed); 
        
     }
 }
