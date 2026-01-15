@@ -8,11 +8,6 @@ public class Driver : MonoBehaviour
     [SerializeField] float moveSpeed = 0.05f;
     [SerializeField] float steerSpeed = 0.5f;
     
-    void Start()
-    {
-
-    }
-    
     void Update()
     {
         float move = 0f;
@@ -36,11 +31,11 @@ public class Driver : MonoBehaviour
             steer = -1f;
         }
 
-        float moveAmount = move * moveSpeed * time.deltaTime;
-        float steerAmount = steer * steerSpeed * time.deltaTime;
+        float moveAmount = move * moveSpeed * Time.deltaTime;
+        float steerAmount = steer * steerSpeed * Time.deltaTime;
         
         transform.Translate(0, moveAmount, 0);
-        transform.Rotate(0, 0, steerAmount); 
-       
+        transform.Rotate(0, 0, steerAmount);
+        
     }
 }
