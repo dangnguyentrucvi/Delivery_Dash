@@ -2,12 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
+using TMPro;
 
 public class Driver : MonoBehaviour
 {
-    [SerializeField] float moveSpeed = 0.05f;
+    [SerializeField] float currentSpeed = 5f;
     [SerializeField] float steerSpeed = 0.5f;
+    [SerializeField] float boostSpeed = 10f;
+    [SerializeField] private float regularSpeed = 5f;
+    [SerializeField] TMP_Text boostText;
+
+    void Start()
+    {Text.gameObjec
+        boostt.SetActive(false);
+    }
     
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Boost"))
+        {
+            currentSpeed = boostSpeed;
+            boostText.gameObject.SetActive(true);
+            Destroy(collision.gameObject);
+        }
+    }
+    
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("WorldCollision"))
+        {
+            currentSpeed = regularSpeed;
+            boostText.gameObject.SetActive(false);
+        }
+    }
     void Update()
     {
         float move = 0f;
@@ -31,7 +59,7 @@ public class Driver : MonoBehaviour
             steer = -1f;
         }
 
-        float moveAmount = move * moveSpeed * Time.deltaTime;
+        float moveAmount = move * currentSpeed * Time.deltaTime;
         float steerAmount = steer * steerSpeed * Time.deltaTime;
         
         transform.Translate(0, moveAmount, 0);
