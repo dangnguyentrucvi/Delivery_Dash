@@ -14,8 +14,8 @@ public class Driver : MonoBehaviour
     [SerializeField] TMP_Text boostText;
 
     void Start()
-    {Text.gameObjec
-        boostt.SetActive(false);
+    {
+        boostText.gameObject.SetActive(false);
     }
     
     void OnTriggerEnter2D(Collider2D collision)
@@ -58,7 +58,7 @@ public class Driver : MonoBehaviour
         {
             steer = -1f;
         }
-
+        
         float moveAmount = move * currentSpeed * Time.deltaTime;
         float steerAmount = steer * steerSpeed * Time.deltaTime;
         

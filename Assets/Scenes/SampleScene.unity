@@ -32010,8 +32010,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01ca4ad50aca02747a67d3886a475a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  currentSpeed: 5
   steerSpeed: 200
+  boostSpeed: 10
+  regularSpeed: 5
+  boostText: {fileID: 1971495982}
 --- !u!212 &1189714439
 SpriteRenderer:
   m_ObjectHideFlags: 0
