@@ -3,11 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using TMPro;
 
 public class Delivery : MonoBehaviour
 {
     private bool hasPackage;
     [SerializeField] private float destroyDelay = 1;
+    [SerializeField] TMP_Text pickedUpText;
+
+    private void Start()
+    {
+        pickedUpText.gameObject.SetActive(false);
+    }
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         // if  (the tag is package)
@@ -16,7 +24,7 @@ public class Delivery : MonoBehaviour
         {
             Debug.Log("Picked up package");
             hasPackage = true;
-            GetComponent<ParticleSystem>().Play();
+            pickedUpText.gameObject.SetActive(true);
             Destroy(collision.gameObject, destroyDelay);
         }
 
@@ -24,7 +32,7 @@ public class Delivery : MonoBehaviour
         {
             Debug.Log("Delivery package");
             hasPackage = false;
-            GetComponent<ParticleSystem>().Stop();
+            pickedUpText.gameObject.SetActive(false);
             Destroy(collision.gameObject);
         }
     }
