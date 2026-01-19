@@ -7,9 +7,9 @@ using TMPro;
 
 public class Driver : MonoBehaviour
 {
-    [SerializeField] float currentSpeed = 5f;
-    [SerializeField] float steerSpeed = 0.5f;
-    [SerializeField] float boostSpeed = 10f;
+    [SerializeField] private currentSpeed = 5f;
+    [SerializeField] private steerSpeed = 0.5f;
+    [SerializeField] private boostSpeed = 10f;
     [SerializeField] private float regularSpeed = 5f;
     [SerializeField] TMP_Text boostText;
 

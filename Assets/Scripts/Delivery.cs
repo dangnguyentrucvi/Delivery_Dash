@@ -11,7 +11,7 @@ public class Delivery : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         // if  (the tag is package)
-        // then (print "pickeup package to console)
+        // then (print "picked up package" to console)
         if (collision.CompareTag("Package") && !hasPackage)
         {
             Debug.Log("Picked up package");
@@ -20,7 +20,7 @@ public class Delivery : MonoBehaviour
             Destroy(collision.gameObject, destroyDelay);
         }
 
-        else if (collision.CompareTag("Customer") && hasPackage)
+        if (collision.CompareTag("Customer") && hasPackage)
         {
             Debug.Log("Delivery package");
             hasPackage = false;
